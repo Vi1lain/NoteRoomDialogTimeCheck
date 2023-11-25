@@ -12,6 +12,7 @@ val Pink40 = Color(0xFF7D5260)
 
 
 val White = Color(0xFFFFFFFF)
+val Silver = Color(0xFFA7A7A7)
 val LightGreen = Color(0xFFD7F7D7)
 val Green = Color(0xFF9EFF9E)
 val HardGreen = Color(0xFF009600)

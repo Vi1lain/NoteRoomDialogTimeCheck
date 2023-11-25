@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,13 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import vi1ain.my.noteroomdialogtimecheck.data.MyString
+import vi1ain.my.noteroomdialogtimecheck.navigation.Route
 import vi1ain.my.noteroomdialogtimecheck.ui.theme.Black
 import vi1ain.my.noteroomdialogtimecheck.ui.theme.HardGreen
 import vi1ain.my.noteroomdialogtimecheck.ui.theme.LightGreen
 import vi1ain.my.noteroomdialogtimecheck.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
 @Composable
 fun EditScreen(navController: NavHostController) {
     Box(modifier = Modifier
@@ -64,10 +65,12 @@ fun EditScreen(navController: NavHostController) {
                         modifier = Modifier.weight(1f),
                         value = "",
                         onValueChange = {})
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {
+                        navController.popBackStack(route = Route.NOTE_LIST, inclusive = false)
+                    }) {
                         Icon(
                             tint = HardGreen,
-                            imageVector = Icons.Default.Edit,
+                            imageVector = Icons.Default.Done,
                             contentDescription = MyString.EDIT
                         )
                     }

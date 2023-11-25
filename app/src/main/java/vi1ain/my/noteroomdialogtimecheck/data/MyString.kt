@@ -8,6 +8,7 @@ object MyString {
 
     const val TITLE = "заголовок"
     const val DESCRIPTION = "описание"
+    const val NEW_ITEM = "Добавить запись"
 
 
 }

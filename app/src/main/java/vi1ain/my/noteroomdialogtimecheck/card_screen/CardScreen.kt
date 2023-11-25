@@ -29,8 +29,6 @@ import vi1ain.my.noteroomdialogtimecheck.ui.theme.Red
 import vi1ain.my.noteroomdialogtimecheck.ui.theme.White
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
 @Composable
 fun CardScreen(navController: NavHostController) {
     Card(
