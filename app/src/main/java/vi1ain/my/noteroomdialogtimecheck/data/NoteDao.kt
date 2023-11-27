@@ -13,8 +13,8 @@ interface NoteDao {
     fun getAllNOtes():Flow<List<NoteEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(noteEntity: NoteEntity)
+    suspend fun insertNote(noteEntity: NoteEntity)
 
     @Delete
-    fun deleteNote(noteEntity: NoteEntity)
+    suspend  fun deleteNote(noteEntity: NoteEntity)
 }

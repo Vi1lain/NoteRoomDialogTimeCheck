@@ -21,11 +21,10 @@ import vi1ain.my.noteroomdialogtimecheck.ui.theme.White
 @Composable
 fun DialogController(
     noteViewModel: NoteViewModel,
-    onDismissRequest:()->Unit,
-    dismissButton:()->Unit,
-    confirmButton:()->Unit,
-
-                     ) {
+    onDismissRequest: () -> Unit,
+    dismissButton: () -> Unit,
+    confirmButton: () -> Unit,
+) {
 
     AlertDialog(containerColor = LightGreen,
         title = {
@@ -35,17 +34,17 @@ fun DialogController(
                     colors = TextFieldDefaults.textFieldColors(containerColor = White),
                     label = { Text(color = Silver, text = MyString.TITLE) },
                     value = noteViewModel.titleState,
-                    onValueChange = {text -> noteViewModel.titleState = text})
+                    onValueChange = { text -> noteViewModel.titleState = text })
                 TextField(
                     colors = TextFieldDefaults.textFieldColors(containerColor = White),
                     label = { Text(color = Silver, text = MyString.DESCRIPTION) },
                     value = noteViewModel.descriptionState,
-                    onValueChange = {text -> noteViewModel.descriptionState = text})
+                    onValueChange = { text -> noteViewModel.descriptionState = text })
             }
         },
         onDismissRequest = { onDismissRequest() },
         dismissButton = {
-            TextButton(onClick = { dismissButton()}) {
+            TextButton(onClick = { dismissButton() }) {
                 Text(text = "Закрыть")
             }
         },

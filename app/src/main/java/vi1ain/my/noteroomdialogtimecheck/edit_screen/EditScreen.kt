@@ -36,9 +36,11 @@ import vi1ain.my.noteroomdialogtimecheck.ui.theme.White
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditScreen(navController: NavHostController, noteViewModel: NoteViewModel) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(LightGreen)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(LightGreen)
+    ) {
         Card(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,9 +64,9 @@ fun EditScreen(navController: NavHostController, noteViewModel: NoteViewModel) {
                             fontWeight = FontWeight.Bold
                         ),
                         modifier = Modifier.weight(1f),
-                        value = "",
-                        onValueChange = {})
-                    IconButton(onClick = {
+                        value = noteViewModel.titleState,
+                        onValueChange = { text -> noteViewModel.titleState = text })
+                    IconButton(onClick = {noteViewModel.insertNote()
                         navController.popBackStack(route = Route.NOTE_LIST, inclusive = false)
                     }) {
                         Icon(
@@ -86,8 +88,8 @@ fun EditScreen(navController: NavHostController, noteViewModel: NoteViewModel) {
                         color = Black
                     ),
                     modifier = Modifier.fillMaxSize(),
-                    value = "",
-                    onValueChange = {}
+                    value = noteViewModel.descriptionState,
+                    onValueChange = {text -> noteViewModel.descriptionState = text}
                 )
             }
         }

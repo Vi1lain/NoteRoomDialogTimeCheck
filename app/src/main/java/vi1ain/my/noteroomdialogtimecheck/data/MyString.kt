@@ -9,6 +9,9 @@ object MyString {
     const val TITLE = "заголовок"
     const val DESCRIPTION = "описание"
     const val NEW_ITEM = "Добавить запись"
+    const val SNAKBAR_MESSAGE = "Отменить удаление"
+    const val RE_ITEM = "Восстановить"
+
 
 
 }

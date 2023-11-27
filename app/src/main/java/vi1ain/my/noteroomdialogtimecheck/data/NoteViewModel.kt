@@ -10,7 +10,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import kotlinx.coroutines.launch
 import vi1ain.my.noteroomdialogtimecheck.App
+import vi1ain.my.noteroomdialogtimecheck.utils.getCurrentTime
 
+@Suppress("UNCHECKED_CAST")
 class NoteViewModel(val noteDB: NoteDB) : ViewModel() {
     val noteList = noteDB.noteDao.getAllNOtes()
     var noteCheckItem: NoteEntity? = null
@@ -18,7 +20,7 @@ class NoteViewModel(val noteDB: NoteDB) : ViewModel() {
     var titleState by mutableStateOf("")
     var descriptionState by mutableStateOf("")
     var dialogState by mutableStateOf(false)
-    var time = "25.11.23-23.10"
+
 
     fun insertNote() = viewModelScope.launch {
         if (titleState.isNotEmpty()) {
@@ -26,14 +28,27 @@ class NoteViewModel(val noteDB: NoteDB) : ViewModel() {
                 ?: NoteEntity(
                     title = titleState,
                     description = descriptionState,
-                    time = time,
+                    time = noteCheckItem?.time?:getCurrentTime(),
                     isCheck = noteCheckItem?.isCheck ?: false
                 )
+            noteDB.noteDao.insertNote(noteItem)
+
         }
+        noteCheckItem = null
+        titleState = ""
+        descriptionState = ""
+
     }
 
     fun deleteNote(noteEntity: NoteEntity) =
         viewModelScope.launch { noteDB.noteDao.deleteNote(noteEntity = noteEntity) }
+
+    fun checkedNote(noteEntity: NoteEntity) =
+        viewModelScope.launch { noteDB.noteDao.insertNote(noteEntity = noteEntity) }
+
+    fun snackBarItem(noteCheckItem:NoteEntity) = viewModelScope.launch {
+        noteDB.noteDao.insertNote(noteEntity = noteCheckItem)
+    }
 
 
     companion object {
